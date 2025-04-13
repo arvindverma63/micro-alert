@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alertify Demo - Top Right</title>
+  <link rel="stylesheet" href="alertify.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .btn-info { background: #1e90ff; color: white; }
+    .btn-success { background: #00cc00; color: white; }
+    .btn-warning { background: #ffaa00; color: white; }
+    .btn-error { background: #ff3333; color: white; }
+    .btn-clear { background: #666; color: white; }
+    .log {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 6px;
+      min-height: 100px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .log p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Alertify Demo - All Alerts Top Right</h1>
+  <div class="controls">
+    <button class="btn-info" onclick="showInfo()">Info Alert</button>
+    <button class="btn-success" onclick="showSuccess()">Success Alert</button>
+    <button class="btn-warning" onclick="showWarning()">Warning Alert</button>
+    <button class="btn-error" onclick="showError()">Error Alert</button>
+    <button class="btn-clear" onclick="clearAlerts()">Clear All Alerts</button>
+  </div>
+  <div class="log" id="log">
+    <p>Click buttons to trigger alerts and see events logged here.</p>
+  </div>
+
+  <script src="alertify.js"></script>
+  <script>
+    // Log events to the demo page
+    function logEvent(message) {
+      const log = document.getElementById('log');
+      const p = document.createElement('p');
+      p.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      log.appendChild(p);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    // Info alert
+    function showInfo() {
+      Alertify.info('This is an info message!', {
+        position: 'top-right',
+        duration: 5000,
+        buttons: [
+          {
+            text: 'Details',
+            style: 'default',
+            onClick: () => logEvent('Details button clicked on Info alert')
+          },
+          {
+            text: 'OK',
+            style: 'primary',
+            close: true,
+            onClick: () => logEvent('OK button clicked on Info alert')
+          }
+        ]
+      });
+      logEvent('Info alert triggered');
+    }
+
+    // Success alert
+    function showSuccess() {
+      Alertify.success('Operation completed successfully!', {
+        position: 'top-right',
+        duration: 6000,
+        icon: true,
+        progress: true,
+        buttons: [
+          {
+            text: 'Undo',
+            style: 'default',
+            onClick: () => logEvent('Undo button clicked on Success alert')
+          },
+          {
+            text: 'Confirm',
+            style: 'primary',
+            close: true,
+            onClick: () => logEvent('Confirm button clicked on Success alert')
+          }
+        ]
+      });
+      logEvent('Success alert triggered');
+    }
+
+    // Warning alert
+    function showWarning() {
+      Alertify.warning('Warning: Low resources detected!', {
+        position: 'top-right',
+        duration: 4000,
+        progress: false,
+        icon: false,
+        dismissible: true,
+        buttons: [
+          {
+            text: 'Ignore',
+            style: 'default',
+            close: true,
+            onClick: () => logEvent('Ignore button clicked on Warning alert')
+          }
+        ]
+      });
+      logEvent('Warning alert triggered');
+    }
+
+    // Error alert
+    function showError() {
+      Alertify.error('Error: Failed to connect to server!', {
+        position: 'top-right',
+        maxStack: 3,
+        duration: 7000,
+        buttons: [
+          {
+            text: 'Retry',
+            style: 'danger',
+            close: true,
+            onClick: () => logEvent('Retry button clicked on Error alert')
+          },
+          {
+            text: 'Report',
+            style: 'default',
+            onClick: () => logEvent('Report button clicked on Error alert')
+          }
+        ]
+      });
+      logEvent('Error alert triggered');
+    }
+
+    // Clear all alerts
+    function clearAlerts() {
+      Alertify.clear();
+      logEvent('All alerts cleared');
+    }
+
+    // Show welcome alert on page load
+    window.onload = () => {
+      Alertify.info('Welcome to the Alertify Demo! Click buttons to test alerts.', {
+        position: 'top-right',
+        duration: 5000
+      });
+      logEvent('Welcome alert shown');
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/* alertify.css */
+.alertify {
+    position: fixed;
+    min-width: 250px;
+    max-width: 400px;
+    margin: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+    backdrop-filter: blur(5px);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform: translateY(var(--stack-offset, 0));
+    transition: transform 0.3s ease;
+  }
+  
+  .alertify-top-right { top: 0; right: 0; }
+  .alertify-top-left { top: 0; left: 0; }
+  .alertify-bottom-right { bottom: 0; right: 0; }
+  .alertify-bottom-left { bottom: 0; left: 0; }
+  
+  .alertify-info { background-color: #1e90ff; }
+  .alertify-success { background-color: #00cc00; }
+  .alertify-warning { background-color: #ffaa00; }
+  .alertify-error { background-color: #ff3333; }
+  
+  .alertify-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  .alertify-message {
+    flex: 1;
+  }
+  
+  .alertify-close {
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .alertify-close:hover { opacity: 1; }
+  
+  .alertify-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.5);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  
+  .alertify-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .alertify-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+  }
+  
+  .alertify-button-default { background: rgba(255,255,255,0.2); color: white; }
+  .alertify-button-default:hover { background: rgba(255,255,255,0.3); }
+  .alertify-button-primary { background: #007bff; color: white; }
+  .alertify-button-primary:hover { background: #0056b3; }
+  .alertify-button-danger { background: #dc3545; color: white; }
+  .alertify-button-danger:hover { background: #b02a37; }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-30px) scale(0.9); opacity: 0; }
+    to { transform: translateY(var(--stack-offset, 0)) scale(1); opacity: 1; }
+  }
+  
+  @keyframes alertify-progress {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+  }
+  
+  .alertify-exit {
+    animation: slideOut 0.3s ease forwards;
+  }
+  
+  @keyframes slideOut {
+    to { transform: translateY(-30px); opacity: 0; }
+  }
