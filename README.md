@@ -7,6 +7,8 @@ A **tiny**, **customizable**, and **dependency-free** JavaScript micro-library f
   <img src="demo-screenshot.png" alt="Alertify Demo" width="600" />
 </p>
 
+<h1><a href="https://micro-alert.vercel.app/">Click To See</a></h1>
+
 ## Why Alertify?
 
 - **Lightweight**: Less than 2KB minified, perfect for performance-conscious projects.
