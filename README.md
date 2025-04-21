@@ -4,8 +4,9 @@
 A **tiny**, **customizable**, and **dependency-free** JavaScript micro-library for displaying modern, elegant alerts in your web applications. With Alertify, you can create beautiful notifications with minimal code, complete with animations, stacking, custom buttons, and more—all under 2KB (minified)!
 
 <p align="center">
-  <video src="https://drive.google.com/file/d/1_kClkiXC3CfcRtieXbtBs778x9zRvE10/view?usp=drive_link" alt="Alertify Demo" width="600" />
+  <iframe src="https://drive.google.com/file/d/1_kClkiXC3CfcRtieXbtBs778x9zRvE10/preview" width="600" height="340" allow="autoplay"></iframe>
 </p>
+
 
 <h1><a href="https://micro-alert.vercel.app/" style="text-color: red; text-decoration: none;">Click To See</a></h1>
 
